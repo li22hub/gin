@@ -1,4 +1,4 @@
-module hello
+module package
 
 go 1.17
 
