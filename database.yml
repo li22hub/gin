@@ -1,0 +1,10 @@
+#HTTP服务地址
+HttpAddr: 127.0.0.1:8889
+#MYSQL服务配置
+Mysql:
+  host: localhost
+  user: root
+  pass: root
+  port: 3306
+  dbname: test
+  charset: utf8
