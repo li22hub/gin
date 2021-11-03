@@ -15,17 +15,6 @@ import (
 	"time"
 )
 
-//TODO
-var service *Service
-
-//TODO
-type Service struct {
-}
-
-func init() {
-	service = &Service{}
-}
-
 //开启http服务
 func Start() {
 	httpTransport := Api.NewHttpTransport()
@@ -33,7 +22,7 @@ func Start() {
 	handleSignals(httpServer)
 }
 
-//信号捕捉，优雅退出
+//信号捕捉 优雅退出
 func handleSignals(httpServer *http.Server) {
 	signCh := make(chan os.Signal, 2)
 	signal.Notify(signCh, os.Interrupt, syscall.SIGHUP, syscall.SIGTERM, syscall.SIGKILL)
