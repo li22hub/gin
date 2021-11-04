@@ -1,13 +1,10 @@
 package Api
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"net/http"
 	"package/Config"
-	models "package/Models"
-	"time"
 )
 
 type HttpTransport struct {
@@ -57,38 +54,4 @@ func (h *HttpTransport) ApiRoutes() {
 	v1 := h.Engine.Group("/v1")
 	v1.GET("/login", h.Login)
 	v1.POST("/create", h.createUser)
-}
-
-//登录接口
-func (h *HttpTransport) Login(ctx *gin.Context) {
-	fmt.Println("hello world!!")
-	ctx.JSON(http.StatusOK,gin.H{
-		"code":http.StatusOK,
-		"message":"小东西 还挺别致!",
-	})
-}
-
-//创建用户
-func (h *HttpTransport) createUser(ctx *gin.Context) {
-	userModel := models.NewUser()
-	userModel.Username = "admin"
-	userModel.Age = 26
-	userModel.Address = ctx.PostForm("address")
-	userModel.Time = time.Now().Unix()
-	userModel.Status = 0
-	userModel.IsDel = 0
-
-	data, err := userModel.Create()
-	fmt.Println(err)
-	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{
-			"code": http.StatusInternalServerError,
-			"info": "create user failed!!",
-		})
-	}
-	ctx.JSON(http.StatusOK, gin.H{
-		"code": http.StatusOK,
-		"data": data,
-		"info": "create user success!!",
-	})
 }
