@@ -8,6 +8,14 @@ import (
 	"time"
 )
 
+//测试接口
+func Test(ctx *gin.Context) {
+	ctx.JSON(http.StatusOK,gin.H{
+		"code":http.StatusOK,
+		"message":"okok!",
+	})
+}
+
 //登录接口
 func Login(ctx *gin.Context) {
 	fmt.Println("hello world!!")
