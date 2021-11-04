@@ -1,23 +1,27 @@
-/**
-所有服务开启或关闭再此调用
-*/
 package service
 
 import (
 	"context"
 	"fmt"
+	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"net/http"
 	"os"
 	"os/signal"
-	"package/Api"
+	"package/Config"
+	"package/Router"
 	"syscall"
 	"time"
 )
 
+type HttpTransport struct {
+	Engine   *gin.Engine
+	StopHttp chan bool
+}
+
 //开启http服务
 func Start() {
-	httpTransport := Api.NewHttpTransport()
+	httpTransport := NewHttpTransport()
 	httpServer := httpTransport.HttpServer()
 	handleSignals(httpServer)
 }
@@ -58,4 +62,37 @@ func stopHttpServer(httpServer *http.Server) {
 		log.Info("timeout of 2 seconds.")
 	}
 	log.Info("Server exiting")
+}
+
+//结构体赋值 类似PHP中实例化
+func NewHttpTransport() *HttpTransport {
+	return &HttpTransport{}
+}
+
+//http服务主方法
+func (h *HttpTransport) HttpServer() *http.Server {
+
+	cfg, err := Config.GetConfig()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	h.Engine = gin.Default()
+	r := Router.NewRoute(h.Engine)
+	r.ApiRoutes()
+
+	srv := &http.Server{
+		Addr:    cfg.HttpAddr,
+		Handler: h.Engine,
+	}
+	go func() {
+		// service connections
+		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			log.Fatalf("listen: %s\n", err)
+		}
+	}()
+	log.WithFields(log.Fields{
+		"address": cfg.HttpAddr,
+	}).Info("api: Running HTTP server")
+	return srv
 }

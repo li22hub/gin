@@ -9,7 +9,7 @@ import (
 )
 
 //登录接口
-func (h *HttpTransport) Login(ctx *gin.Context) {
+func Login(ctx *gin.Context) {
 	fmt.Println("hello world!!")
 	ctx.JSON(http.StatusOK,gin.H{
 		"code":http.StatusOK,
@@ -18,7 +18,7 @@ func (h *HttpTransport) Login(ctx *gin.Context) {
 }
 
 //创建用户
-func (h *HttpTransport) createUser(ctx *gin.Context) {
+func CreateUser(ctx *gin.Context) {
 	userModel := models.NewUser()
 	userModel.Username = "admin"
 	userModel.Age = 26
