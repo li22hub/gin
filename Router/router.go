@@ -27,8 +27,9 @@ func (r *route) ApiRoutes() {
 
 	v1 := r.Engine.Group("/v1")
 	v1.GET("/login", Api.Login)
-	v1.POST("/create", Api.CreateUser)
+
 
 	v2 := r.Engine
-	v2.POST("/test",Api.Test)
+	v2.POST("/GetUserOne",Api.GetUserOne)
+	v2.POST("/GetUserList",Api.GetUserList)
 }

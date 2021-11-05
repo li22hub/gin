@@ -30,11 +30,11 @@ func newMysql() *Mysql {
 }
 
 //获取mysql
-func GetMysql() (*Mysql, error) {
+func GetMysql() *Mysql {
 	ConnectOnce.Do(func() {
 		mysql, _ = prepareConnect()
 	})
-	return mysql, nil
+	return mysql
 }
 
 //mysql链接

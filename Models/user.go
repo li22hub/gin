@@ -1,38 +1,42 @@
-package models
+package Models
 
 import (
-	"github.com/jinzhu/gorm"
+	"fmt"
 	"package/Database"
 )
 
 type User struct {
-	Id       int64 `gorm:"primary_key"`
-	Username string
-	Age      int64
-	Address	 string
-	Time	 int64
-	Status   int
-	IsDel    int
+	Id       int    `gorm:"column:id" db:"id" json:"id" form:"id"`
+	Username string `gorm:"column:username" db:"username" json:"username" form:"username"`
+	Age      int    `gorm:"column:age" db:"age" json:"age" form:"age"`
+	Address  string `gorm:"column:address" db:"address" json:"address" form:"address"`
+	Time     int64  `gorm:"column:time" db:"time" json:"time" form:"time"`
+	Status   int    `gorm:"column:status" db:"status" json:"status" form:"status"`
+	IsDel    int    `gorm:"column:is_del" db:"is_del" json:"is_del" form:"is_del"`
 }
 
-var (
-	userTest *Database.Mysql
-)
 
-//获取表名
-func (User) TableName() string {
-	return "user_test"
+//根据id查询一条用户信息
+func UserListOne(u User) (User, error) {
+	userTest := Database.GetMysql()
+	err := userTest.DB.Table("user_test").First(&u).Error
+	fmt.Println(err)
+	if err != nil {
+		defer userTest.DB.Close()
+		return u, err
+	}
+	return u, nil
 }
 
-func NewUser() *User {
-	return &User{}
-}
 
-//创建用户
-func (u *User) Create() (*gorm.DB, error) {
-	userTest, _ = Database.GetMysql()
-	defer userTest.DB.Close()
-	//fmt.Println(u.Username)
-	data := userTest.DB.Create(&u)
-	return data, nil
+//查询所有用户信息
+func UserList(u []*User) ([]*User, error) {
+	userTest := Database.GetMysql()
+	err := userTest.DB.Table("user_test").Find(&u).Error
+	fmt.Println(err)
+	if err != nil {
+		defer userTest.DB.Close()
+		return u, err
+	}
+	return u, nil
 }

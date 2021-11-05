@@ -4,48 +4,53 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	models "package/Models"
-	"time"
+	common "package/Common"
+	"package/Models"
 )
 
-//测试接口
-func Test(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK,gin.H{
-		"code":http.StatusOK,
-		"message":"okok!",
-	})
-}
 
 //登录接口
 func Login(ctx *gin.Context) {
 	fmt.Println("hello world!!")
-	ctx.JSON(http.StatusOK,gin.H{
-		"code":http.StatusOK,
-		"message":"小东西 还挺别致!",
+	ctx.JSON(http.StatusOK, gin.H{
+		"code":    http.StatusOK,
+		"message": "小东西 还挺别致!",
 	})
 }
 
-//创建用户
-func CreateUser(ctx *gin.Context) {
-	userModel := models.NewUser()
-	userModel.Username = "admin"
-	userModel.Age = 26
-	userModel.Address = ctx.PostForm("address")
-	userModel.Time = time.Now().Unix()
-	userModel.Status = 0
-	userModel.IsDel = 0
-
-	data, err := userModel.Create()
-	fmt.Println(err)
+//一条用户信息
+func GetUserOne(ctx *gin.Context) {
+	var resData common.Response
+	data := Models.User{}
+	data, err := Models.UserListOne(data)
+	resData.Data = data
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{
-			"code": http.StatusInternalServerError,
-			"info": "create user failed!!",
-		})
+		resData.Code = 500
+		resData.Msg = fmt.Sprintf("%v", err)
+		ctx.JSON(http.StatusInternalServerError, resData)
+		return
 	}
-	ctx.JSON(http.StatusOK, gin.H{
-		"code": http.StatusOK,
-		"data": data,
-		"info": "create user success!!",
-	})
+	resData.Code = 200
+	resData.Msg = "操作成功"
+	ctx.JSON(http.StatusOK, resData)
+	return
+}
+
+
+//用户列表
+func GetUserList(ctx *gin.Context) {
+	var resData common.Response
+	data := []*Models.User{}
+	data, err := Models.UserList(data)
+	resData.Data = data
+	if err != nil {
+		resData.Code = 500
+		resData.Msg = fmt.Sprintf("%v", err)
+		ctx.JSON(http.StatusInternalServerError, resData)
+		return
+	}
+	resData.Code = 200
+	resData.Msg = "操作成功"
+	ctx.JSON(http.StatusOK, resData)
+	return
 }
