@@ -15,11 +15,12 @@ type User struct {
 	IsDel    int    `gorm:"column:is_del" db:"is_del" json:"is_del" form:"is_del"`
 }
 
-
-//根据id查询一条用户信息
-func UserListOne(u User) (User, error) {
+//查询所有用户信息
+func UserList(u []*User) ([]*User, error) {
 	userTest := Database.GetMysql()
-	err := userTest.DB.Table("user_test").First(&u).Error
+	db := userTest.DB.Table("user_test")
+	db = db.Limit(20).Find(&u)
+	err := db.Error
 	fmt.Println(err)
 	if err != nil {
 		defer userTest.DB.Close()
@@ -28,15 +29,64 @@ func UserListOne(u User) (User, error) {
 	return u, nil
 }
 
-
-//查询所有用户信息
-func UserList(u []*User) ([]*User, error) {
+//根据id查询一条用户信息
+func UserListOne(where User) (User, error) {
 	userTest := Database.GetMysql()
-	err := userTest.DB.Table("user_test").Find(&u).Error
-	fmt.Println(err)
+	var data User
+	db := userTest.DB.Table("user_test")
+	if where.Id > 0 {
+		db = db.Where("id = ?", where.Id)
+	}
+	err := db.Error
+	if err != nil {
+		fmt.Println(err)
+		defer userTest.DB.Close()
+		return data, err
+	}
+	return data, nil
+}
+
+//根据id更新一条用户信息
+func UpdateUserOne(where User, data map[string]interface{}) (err error) {
+	userTest := Database.GetMysql()
+	db := userTest.DB.Table("user_test")
+	if where.Id > 0 {
+		db = db.Where("id = ?", where.Id).Update(data)
+	}
+	err = db.Error
+	if err != nil {
+		fmt.Println(err)
+		defer userTest.DB.Close()
+		return err
+	}
+	return nil
+}
+
+//根据id删除一条数据
+func DelUserOne(where User) (err error) {
+	usetTest := Database.GetMysql()
+	db := usetTest.DB.Table("user_test")
+	if where.Id > 0 {
+		db = db.Where("id = ?", where.Id).Delete(&where)
+	}
+	err = db.Error
+	if err != nil {
+		defer usetTest.DB.Close()
+		return err
+	}
+	return nil
+}
+
+//插入一条数据
+func AddUserOne(u User) (err error) {
+	userTest := Database.GetMysql()
+	db := userTest.DB.Table("user_test")
+	db = db.Create(&u)
+	db.LogMode(true)
+	err = db.Error
 	if err != nil {
 		defer userTest.DB.Close()
-		return u, err
+		return err
 	}
-	return u, nil
+	return nil
 }
