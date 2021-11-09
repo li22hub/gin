@@ -32,13 +32,13 @@ func newMysql() *Mysql {
 //获取mysql
 func GetMysql() *Mysql {
 	ConnectOnce.Do(func() {
-		mysql, _ = prepareConnect()
+		mysql, _ = mysqlConnect()
 	})
 	return mysql
 }
 
 //mysql链接
-func prepareConnect() (*Mysql, error) {
+func mysqlConnect() (*Mysql, error) {
 	cfg, _ := Config.GetConfig()
 	Host = cfg.Mysql["host"]
 	User = cfg.Mysql["user"]

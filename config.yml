@@ -1,0 +1,25 @@
+
+#HTTP服务地址
+HttpAddr: 127.0.0.1:8889
+
+#Mysql服务配置
+Mysql:
+  host: localhost
+  user: root
+  pass: root
+  port: 3306
+  dbname: test
+  charset: utf8
+
+#Redis服务配置
+Redis:
+  host: localhost
+  user: root
+  pass: root
+  port: 6379
+  dbname: 0
+  charset: utf8
+
+#Kafka服务配置
+#RabbitMq服务配置
+#ElasticSearch服务配置

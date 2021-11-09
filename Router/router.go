@@ -1,9 +1,11 @@
 package Router
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"package/Api"
+	"package/MiddleWare"
 )
 
 type route struct {
@@ -25,8 +27,24 @@ func (r *route) ApiRoutes() {
 		})
 	})
 
+	//加载中间件
+	r.Engine.Use(MiddleWare.MiddleWare())
+	{
+		r.Engine.GET("/ce", func(c *gin.Context) {
+			//获取中间件的变量值
+			req, _ := c.Get("request")
+			fmt.Println("request:", req)
+			//接口返回值
+			c.JSON(200, gin.H{"request": req})
+		})
+	}
+
 	v1 := r.Engine.Group("/v1")
 	v1.GET("/login", Api.Login)
+
+	v0 := r.Engine
+	v0.GET("/test", Api.Test)
+	v0.GET("/SetRedis",Api.SetRedis)
 
 	v2 := r.Engine
 	v2.POST("/GetUserList", Api.GetUserList)
@@ -34,4 +52,6 @@ func (r *route) ApiRoutes() {
 	v2.POST("/UpdateUserOne", Api.UpdateUserOne)
 	v2.POST("/DelUserOne", Api.DelUserOne)
 	v2.POST("/AddUserOne", Api.AddUserOne)
+	v2.POST("/AddUserList", Api.AddUserList)
+	v2.POST("/UpFile", Api.UpFile)
 }

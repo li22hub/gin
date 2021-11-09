@@ -90,3 +90,17 @@ func AddUserOne(u User) (err error) {
 	}
 	return nil
 }
+
+//批量插入数组数据
+func AddUserList(u User) (err error) {
+	userTest := Database.GetMysql()
+	db := userTest.DB.Table("user_test")
+	db = db.Create(&u)
+	db.LogMode(true)
+	err = db.Error
+	if err != nil {
+		defer userTest.DB.Close()
+		return err
+	}
+	return nil
+}

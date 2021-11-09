@@ -116,7 +116,7 @@ func AddUserOne(ctx *gin.Context) {
 		common.ResponseData(ctx, http.StatusOK, 1, "参数username为空", err)
 		return
 	}
-	data.Age,_ = strconv.Atoi(ctx.PostForm("age"))
+	data.Age, _ = strconv.Atoi(ctx.PostForm("age"))
 	if data.Age <= 0 {
 		common.ResponseData(ctx, http.StatusOK, 1, "参数age为空", err)
 		return
@@ -133,5 +133,30 @@ func AddUserOne(ctx *gin.Context) {
 		return
 	}
 	common.ResponseData(ctx, http.StatusOK, 0, "插入成功", data)
+	return
+}
+
+//批量插入数组数据
+func AddUserList(ctx *gin.Context) {
+	array := [...][3]string{
+		{"雷欧", "26", "北京市南京西路步行街"},
+		{"高斯", "27", "深圳市南京西路步行街"},
+		{"戴拿", "25", "南京市南京西路步行街"},
+	}
+	var data Models.User
+	var err error
+	for _, v := range array {
+		data.Username = v[0]
+		data.Age, _ = strconv.Atoi(v[1])
+		data.Address = v[2]
+		data.Time = time.Now().Unix()
+		data.Status = 0
+		err = Models.AddUserList(data)
+	}
+	if err != nil {
+		common.ResponseData(ctx, http.StatusOK, 1, "批量插入失败", err)
+		return
+	}
+	common.ResponseData(ctx, http.StatusOK, 0, "批量插入成功", struct{}{})
 	return
 }
