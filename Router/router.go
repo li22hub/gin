@@ -44,7 +44,7 @@ func (r *route) ApiRoutes() {
 
 	v0 := r.Engine
 	v0.GET("/test", Api.Test)
-	v0.GET("/SetRedis",Api.SetRedis)
+	v0.GET("/tryRedis", Api.TryRedis)
 
 	v2 := r.Engine
 	v2.POST("/GetUserList", Api.GetUserList)
@@ -54,4 +54,5 @@ func (r *route) ApiRoutes() {
 	v2.POST("/AddUserOne", Api.AddUserOne)
 	v2.POST("/AddUserList", Api.AddUserList)
 	v2.POST("/UpFile", Api.UpFile)
+	v2.POST("/FindList", Api.FindList)
 }

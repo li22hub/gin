@@ -60,7 +60,7 @@ func GetUserOne(ctx *gin.Context) {
 		common.ResponseData(ctx, http.StatusOK, 1, "查询失败", nil)
 		return
 	}
-	common.ResponseData(ctx, http.StatusOK, 0, "操作成功", data)
+	common.ResponseData(ctx, http.StatusOK, 0, "查询成功", data)
 	return
 }
 
@@ -76,10 +76,10 @@ func UpdateUserOne(ctx *gin.Context) {
 	}
 	data = make(map[string]interface{})
 	data["username"] = ctx.PostForm("username")
-	data["age"] = ctx.PostForm("age")
+	data["age"], _ = strconv.Atoi(ctx.PostForm("age"))
 	data["address"] = ctx.PostForm("address")
 	data["time"] = time.Now().Unix()
-	data["status"] = ctx.PostForm("status")
+	data["status"], _ = strconv.Atoi(ctx.PostForm("status"))
 	err = Models.UpdateUserOne(where, data)
 	if err != nil {
 		common.ResponseData(ctx, http.StatusOK, 1, "更新失败", err)

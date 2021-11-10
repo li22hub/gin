@@ -37,6 +37,7 @@ func UserListOne(where User) (User, error) {
 	if where.Id > 0 {
 		db = db.Where("id = ?", where.Id)
 	}
+	db = db.First(&data)
 	err := db.Error
 	if err != nil {
 		fmt.Println(err)
