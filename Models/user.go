@@ -16,17 +16,18 @@ type User struct {
 }
 
 //查询所有用户信息
-func UserList(u []*User) ([]*User, error) {
+func UserList(u []*User) ([]*User,int,error) {
 	userTest := Database.GetMysql()
+	var count int
 	db := userTest.DB.Table("user_test")
-	db = db.Limit(20).Find(&u)
+	db = db.Limit(20).Find(&u).Count(&count)
 	err := db.Error
 	fmt.Println(err)
 	if err != nil {
 		defer userTest.DB.Close()
-		return u, err
+		return u,count, err
 	}
-	return u, nil
+	return u,count, nil
 }
 
 //根据id查询一条用户信息

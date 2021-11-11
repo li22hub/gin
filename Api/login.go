@@ -24,7 +24,12 @@ func Login(ctx *gin.Context) {
 func GetUserList(ctx *gin.Context) {
 	var resData common.ResponseList
 	data := []*Models.User{}
-	data, err := Models.UserList(data)
+	data,count, err := Models.UserList(data)
+	for _,v := range data {
+		timeLayout := "2006-01-02 15:04:05"
+		newTime := time.Unix(v.Time, 0).Format(timeLayout)
+		fmt.Println(newTime)
+	}
 	resData.Data = data
 	if err != nil {
 		resData.Code = 500
@@ -34,8 +39,7 @@ func GetUserList(ctx *gin.Context) {
 	}
 	resData.Code = 200
 	resData.Msg = "操作成功"
-	//fmt.Println(reflect.TypeOf(resData))
-	//resData.TotalCount = len(resData)
+	resData.TotalCount = count
 	ctx.JSON(http.StatusOK, resData)
 	return
 }

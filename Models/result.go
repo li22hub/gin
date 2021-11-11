@@ -1,6 +1,7 @@
 package Models
 
 import (
+	"encoding/json"
 	"package/Database"
 )
 
@@ -9,7 +10,7 @@ type Result struct {
 	DesignResultId   string `gorm:"column:design_result_id" json:"design_result_id"`
 	DesignId         string `gorm:"column:design_id" json:"design_id"`
 	AlgorithmId      string `gorm:"column:algorithm_id" json:"algorithm_id"`
-	DesignResultPath string `gorm:"column:design_result_path" json:"design_result_path"`
+	DesignResultPath json.RawMessage `gorm:"column:design_result_path" json:"design_result_path"`
 	Video            string `gorm:"column:video" json:"video"`
 	RendererVersion  string `gorm:"column:renderer_version" json:"renderer_version"`
 	DefaultShow      string `gorm:"column:default_show" json:"default_show"`

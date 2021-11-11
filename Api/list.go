@@ -6,6 +6,7 @@ import (
 	"github.com/garyburd/redigo/redis"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
+	"math"
 	"net/http"
 	common "package/Common"
 	"package/Database"
@@ -50,12 +51,14 @@ func FindList(ctx *gin.Context) {
 	var err error
 	page, _ := strconv.Atoi(ctx.Query("page"))
 	pageSize, _ := strconv.Atoi(ctx.Query("pageSize"))
+	if page == 0 || pageSize == 0 {
+		common.ResponseData(ctx,http.StatusInternalServerError,1,"缺少必填参数",nil)
+	}
 	where.Id, _ = strconv.Atoi(ctx.Query("id"))
 	where.ExecuteCount, _ = strconv.Atoi(ctx.Query("execute_count"))
 	where.IsDel, _ = strconv.Atoi(ctx.Query("is_del"))
 	where.Video = ctx.Query("video")
 	data, count, err := Models.FindList(where, page, pageSize)
-
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {
 			common.ResponseData(ctx, http.StatusOK, 1, "没有相关数据", nil) //查不到
@@ -70,6 +73,7 @@ func FindList(ctx *gin.Context) {
 		"data":       data,
 		"page":       page,
 		"pageSize":   pageSize,
+		"pageCount":  math.Ceil(float64(count) / float64(pageSize)),
 		"totalCount": count,
 	})
 	return
