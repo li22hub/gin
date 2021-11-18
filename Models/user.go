@@ -5,14 +5,26 @@ import (
 	"package/Database"
 )
 
+//对应数据库
 type User struct {
-	Id       int    `gorm:"column:id" db:"id" json:"id" form:"id"`
-	Username string `gorm:"column:username" db:"username" json:"username" form:"username"`
-	Age      int    `gorm:"column:age" db:"age" json:"age" form:"age"`
-	Address  string `gorm:"column:address" db:"address" json:"address" form:"address"`
-	Time     int64  `gorm:"column:time" db:"time" json:"time" form:"time"`
-	Status   int    `gorm:"column:status" db:"status" json:"status" form:"status"`
-	IsDel    int    `gorm:"column:is_del" db:"is_del" json:"is_del" form:"is_del"`
+	Id       int    `gorm:"column:id" db:"id" form:"id"`
+	Username string `gorm:"column:username" db:"username" form:"username"`
+	Age      int    `gorm:"column:age" db:"age" form:"age"`
+	Address  string `gorm:"column:address" db:"address" form:"address"`
+	Time     int64  `gorm:"column:time" db:"time" form:"time"`
+	Status   int    `gorm:"column:status" db:"status" form:"status"`
+	IsDel    int    `gorm:"column:is_del" db:"is_del" form:"is_del"`
+}
+
+//对应response
+type Users struct {
+	Id       int    `json:"id" db:"id" form:"id"`
+	Username string `json:"username" db:"username" form:"username"`
+	Age      int    `json:"age" db:"age" form:"age"`
+	Address  string `json:"address" db:"address" form:"address"`
+	Time     string  `json:"time" db:"time" form:"time"`
+	Status   int    `json:"status" db:"status" form:"status"`
+	IsDel    int    `json:"is_del" db:"is_del" form:"is_del"`
 }
 
 //查询所有用户信息

@@ -20,17 +20,26 @@ func Login(ctx *gin.Context) {
 	})
 }
 
+type UserRes []Models.Users
+
 //用户列表
 func GetUserList(ctx *gin.Context) {
 	var resData common.ResponseList
 	data := []*Models.User{}
 	data,count, err := Models.UserList(data)
-	for _,v := range data {
+	users := make(UserRes, len(data))
+	for i,v := range data {
 		timeLayout := "2006-01-02 15:04:05"
 		newTime := time.Unix(v.Time, 0).Format(timeLayout)
-		fmt.Println(newTime)
+		users[i].Id = v.Id
+		users[i].Age = v.Age
+		users[i].Address = v.Address
+		users[i].Username = v.Username
+		users[i].Status = v.Status
+		users[i].IsDel = v.IsDel
+		users[i].Time = newTime
 	}
-	resData.Data = data
+	resData.Data = users
 	if err != nil {
 		resData.Code = 500
 		resData.Msg = fmt.Sprintf("%v", err)
