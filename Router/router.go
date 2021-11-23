@@ -45,6 +45,7 @@ func (r *route) ApiRoutes() {
 	v0 := r.Engine
 	v0.GET("/test", Api.Test)
 	v0.GET("/tryRedis", Api.TryRedis)
+	v0.GET("/hello", Api.Hello)
 
 	v2 := r.Engine
 	v2.POST("/GetUserList", Api.GetUserList)
