@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"io"
 	"os"
@@ -11,6 +12,10 @@ import (
 var (
 	cfgfile = "E:/package/config.yml"
 )
+
+func init(){
+	fmt.Println("我开始执行了!")
+}
 
 func main() {
 	Config.Initialize(cfgfile)
