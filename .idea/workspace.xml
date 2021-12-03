@@ -6,16 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8237690b-007f-416d-8462-857cea84a702" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../packages/hello.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../packages/mysite/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../packages/mysite/polls/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../packages/mysite/polls/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../packages/mysite/polls/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../packages/mysite/polls/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../packages/mysite/polls/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../packages/mysite/polls/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../packages/mysite/polls/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../packages/mysite/polls/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/Router/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go_build.exe" beforeDir="false" afterPath="$PROJECT_DIR$/go_build.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Go Application" />
         <option value="Python Script" />
+        <option value="Go Application" />
       </list>
     </option>
   </component>
@@ -52,7 +46,7 @@
   </component>
   <component name="GOROOT" url="file://C:/Program Files/Go" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../packages" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -113,7 +107,7 @@
       <recent name="E:\package\Router" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.python">
+  <component name="RunManager" selected="Go Build.go build">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
@@ -212,7 +206,11 @@
       <workItem from="1637908834935" duration="1991000" />
       <workItem from="1637911110727" duration="1092000" />
       <workItem from="1637912235535" duration="5920000" />
-      <workItem from="1638163308046" duration="13147000" />
+      <workItem from="1638163308046" duration="16874000" />
+      <workItem from="1638236775574" duration="3360000" />
+      <workItem from="1638249678421" duration="1184000" />
+      <workItem from="1638346586322" duration="648000" />
+      <workItem from="1638515676159" duration="8027000" />
     </task>
     <servers />
   </component>

@@ -56,4 +56,5 @@ func (r *route) ApiRoutes() {
 	v2.POST("/AddUserList", Api.AddUserList)
 	v2.POST("/UpFile", Api.UpFile)
 	v2.POST("/FindList", Api.FindList)
+	v2.POST("/FindAll", Api.FindAll)
 }
