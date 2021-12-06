@@ -57,4 +57,6 @@ func (r *route) ApiRoutes() {
 	v2.POST("/UpFile", Api.UpFile)
 	v2.POST("/FindList", Api.FindList)
 	v2.POST("/FindAll", Api.FindAll)
+	v2.POST("/PingMQsend", Api.PingMQsend)
+	v2.POST("/PingMQreceive", Api.PingMQreceive)
 }
