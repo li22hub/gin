@@ -1,16 +1,19 @@
 package Models
 
 import (
+	"encoding/json"
 	"fmt"
 	"package/Database"
 )
 
 //定义表结构结构体
 type TestDetail struct {
-	Id     int    `gorm:"column:id" db:"id" form:"id"`
-	TestId int    `gorm:"column:test_id" db:"test_id" form:"test_id" `
-	Name   string `gorm:"column:name" db:"name" form:"name" `
-	Data   string `gorm:"column:data" db:"data" form:"data" `
+	Id       int             `gorm:"column:id" db:"id" form:"id"`
+	TestId   int             `gorm:"column:test_id" db:"test_id" form:"test_id" `
+	Name     string          `gorm:"column:name" db:"name" form:"name" `
+	Data     json.RawMessage `gorm:"column:data" db:"data" form:"data" `
+	Time     int64           `gorm:"column:time" db:"time" form:"time" `
+	DataTime string          `gorm:"column:datatime" db:"datatime" form:"datatime" `
 }
 
 //获取detail表数据
