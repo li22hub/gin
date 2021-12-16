@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	cfgfile = "E:/package/config.yml"
+	cfgfile = "E:/package_go/config.yml"
 )
 
 func init(){
