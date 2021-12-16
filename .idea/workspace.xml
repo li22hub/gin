@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8237690b-007f-416d-8462-857cea84a702" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/testDetail.go" beforeDir="false" afterPath="$PROJECT_DIR$/Models/testDetail.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go_build.exe" beforeDir="false" afterPath="$PROJECT_DIR$/go_build.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,6 +211,7 @@
       <workItem from="1638840970534" duration="918000" />
       <workItem from="1638950650960" duration="3041000" />
       <workItem from="1639117652005" duration="8432000" />
+      <workItem from="1639460764566" duration="4462000" />
     </task>
     <servers />
   </component>
