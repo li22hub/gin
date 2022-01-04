@@ -14,14 +14,15 @@ func sum(s []int, c chan int) {
 }
 
 func ChannelT(ctx *gin.Context) {
-	s := []int{7, 2, 8, -9, 4, 0}
+	s := []int{7, 2, 8, -6, 1, 0}
 	c := make(chan int)
+	go sum(s, c)
 	go sum(s[:len(s)/2], c)
 	go sum(s[len(s)/2:], c)
-	x, y := <-c, <-c //从通道c中接受
+	C, B, A := <-c, <-c, <-c //从通道c中接受
 	ctx.JSON(http.StatusOK, gin.H{
-		"x":   x,
-		"y":   y,
-		"x+y": x + y,
+		"A": A, //-5
+		"B": B, //17
+		"C": C, //12
 	})
 }
