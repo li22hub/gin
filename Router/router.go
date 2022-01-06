@@ -60,4 +60,5 @@ func (r *route) ApiRoutes() {
 	v2.POST("/PingMQsend", Api.PingMQsend)
 	v2.POST("/PingMQreceive", Api.PingMQreceive)
 	v2.POST("/ChannelT", Api.ChannelT)
+	v2.POST("/ChannelClose", Api.ChannelClose)
 }
