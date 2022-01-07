@@ -7,6 +7,7 @@ import (
 	"package/Models"
 )
 
+//获取detail表数据
 func FindAll(ctx *gin.Context) {
 	var resData common.ResponseList
 	data := []*Models.TestDetail{}
