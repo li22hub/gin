@@ -5,6 +5,23 @@ import (
 	"package/Database"
 )
 
+// TreeList 菜单
+type TreeList struct {
+	Id        int
+	Pid       int
+	Shortname string
+	Name      string
+	Mergename string
+	Level     int
+	Pinyin    string
+	Code      string
+	Zip       string
+	First     string
+	Lng       string
+	Lat       string
+	Children  []TreeList
+}
+
 type ChinaAddress struct {
 	Id        int    `gorm:"column:id" db:"id" form:"id"`
 	Pid       int    `gorm:"column:pid" db:"pid" form:"pid"`
@@ -18,6 +35,7 @@ type ChinaAddress struct {
 	First     string `gorm:"column:first" db:"first" form:"first"`
 	Lng       string `gorm:"column:lng" db:"id" form:"lng"`
 	Lat       string `gorm:"column:lat" db:"lat" form:"lat"`
+	Children  []ChinaAddress
 }
 
 func ListAddress(c []*ChinaAddress) ([]*ChinaAddress, int, error) {
@@ -32,4 +50,48 @@ func ListAddress(c []*ChinaAddress) ([]*ChinaAddress, int, error) {
 		return c, count, err
 	}
 	return c, count, nil
+}
+
+// FormMenu 格式化菜单
+func FormMenu(list []ChinaAddress, pid int) (formMenu []ChinaAddress) {
+	for _, val := range list {
+		if val.Pid == pid {
+			if pid == 0 {
+				// 顶层
+				formMenu = append(formMenu, val)
+			} else {
+				var children []ChinaAddress
+				child := val
+				children = append(children, child)
+			}
+		}
+	}
+	return
+}
+
+// GetMenu 获取菜单
+func GetMenu(menuList []*ChinaAddress, pid int) []TreeList {
+	treeList := []TreeList{}
+	for _, v := range menuList {
+		if v.Pid == pid {
+			child := GetMenu(menuList, v.Id)
+			node := TreeList{
+				Id:        v.Id,
+				Pid:       v.Pid,
+				Shortname: v.Shortname,
+				Name:      v.Name,
+				Mergename: v.Mergename,
+				Level:     v.Level,
+				Pinyin:    v.Pinyin,
+				Code:      v.Code,
+				Zip:       v.Zip,
+				First:     v.First,
+				Lng:       v.Lng,
+				Lat:       v.Lat,
+			}
+			node.Children = child
+			treeList = append(treeList, node)
+		}
+	}
+	return treeList
 }

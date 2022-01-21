@@ -44,3 +44,23 @@ func GetChinaAddress(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, resData)
 	return
 }
+
+//menuTree树
+func MenuTree(ctx *gin.Context) {
+	var resData common.ResponseList
+	data := []*Models.ChinaAddress{}
+	data, count, err := Models.ListAddress(data)
+	list := Models.GetMenu(data, 0)
+	if err != nil {
+		resData.Code = 500
+		resData.Msg = "失败"
+		ctx.JSON(http.StatusInternalServerError, resData)
+		return
+	}
+	resData.Code = 200
+	resData.Msg = "成功"
+	resData.Data = list
+	resData.TotalCount = count
+	ctx.JSON(http.StatusOK, resData)
+	return
+}
