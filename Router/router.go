@@ -63,4 +63,5 @@ func (r *route) ApiRoutes() {
 	v2.POST("/ChannelClose", Api.ChannelClose)
 	v2.POST("/GetChinaAddress", Api.GetChinaAddress)
 	v2.POST("/MenuTree", Api.MenuTree)
+	v2.POST("/TestStudy", Api.TestStudy)
 }

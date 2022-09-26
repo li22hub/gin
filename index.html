@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>网页顶部导航菜单</title>
+</head>
+<body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    #cavs {
+        background: black;
+    }
+
+    .container {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .c-nav .show {
+        display: inline-block;
+    }
+
+    .c-nav {
+        width: 100%;
+        background-color: black;
+
+    }
+
+    .c-nav .navFlex {
+        display: flex;
+        display: -webkit-flex;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+        align-items: center;
+        -webkit-align-content: center;
+        color: white;
+    }
+
+    .c-nav ul {
+        list-style: none;
+        margin-bottom: 0px;
+        padding-left: 0px;
+    }
+
+    .c-nav ul li {
+        padding: 15px 0px 15px 0px;
+        margin-left: 15px;
+        margin-right: 15px;
+        display: inline-block;
+    }
+
+    .c-nav ul li a {
+        color: white;
+        padding-bottom: 2px;
+        text-decoration: none;
+        border-bottom: 3px solid transparent;
+    }
+
+    .c-nav ul li a:hover {
+        border-bottom: 3px solid #e4c17e;
+    }
+
+    .c-nav .logo {
+        height: 40px;
+    }
+
+    .dropdown-btn {
+        background-color: #df4356;
+        color: black;
+        padding: 12px;
+        font-size: 18px;
+        border: none;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 106px;
+        box-shadow: 5px 16px 16px 8px rgba(0, 0, 0, 0.4);
+        z-index: 1;
+    }
+
+    .dropdown-menu a {
+        color: black;
+        padding: 8px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: #cccccc;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+
+    .banner {
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .banner_tuli {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .banner_tuli ul {
+        overflow: auto;
+        width: 100000px;
+    }
+
+    .banner_tuli ul li {
+        float: left;
+    }
+
+    .banner_tuli ul li img {
+        max-height: 600px;
+        max-width: 100%;
+    }
+
+    .list {
+        position: absolute;
+        width: 400px;
+        height: 15px;
+        left: 50%;
+        margin-left: -200px;
+        margin-top: -20px;
+    }
+
+    .list ul {
+        overflow: auto;
+    }
+
+    .list ul li {
+        list-style-type: none;
+        float: left;
+        background: #333333;
+        margin-right: 16.5px;
+        margin-left: 16.5px;
+        width: 100px;
+        height: 10px;
+        cursor: pointer;
+    }
+
+    .list ul li.on {
+        background: #ff0000;
+    }
+
+</style>
+
+<!--导航栏-->
+<div class="c-nav">
+    <div class="container navFlex">
+        <img class="logo"
+             src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fmoxiangxu.com%2Fuploadfiles%2F202004%2F20200430112748344834.jpg&refer=http%3A%2F%2Fmoxiangxu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1661062286&t=10ef2b05bc29291488604a4738bf5838"/>
+        <div class="flexItem show">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">品牌故事</a></li>
+                <li><a href="#">产品中心</a></li>
+                <li><a href="#">网上商城</a></li>
+                <li><a href="#">招商加盟</a></li>
+                <li><a href="#">行业新闻</a></li>
+                <li><a href="#">联系我们</a></li>
+                <li><a href="https://www.baidu.com" target="_blank">百度一下</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">Dropdown</button>
+            <div class="dropdown-menu">
+                <a href="#" id="Dropdown1">Dropdown 1</a>
+                <a href="#" id="Dropdown2">Dropdown 2</a>
+                <a href="#" id="Dropdown3">Dropdown 3</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--轮播图-->
+<div class="banner">
+    <div class="banner_tuli">
+        <ul>
+            <li><img src="https://www.nikestore.com.cn/nike-pim/2022-07-18/pc_727c3d6f-f04d-49f5-9a18-55f13ca6007c.png"/></li>
+            <li><img src="https://www.nikestore.com.cn/nike-pim/2022-07-18/pc_727c3d6f-f04d-49f5-9a18-55f13ca6007c.png"/></li>
+            <li><img src="https://www.nikestore.com.cn/nike-pim/2022-07-18/pc_727c3d6f-f04d-49f5-9a18-55f13ca6007c.png"/></li>
+        </ul>
+    </div>
+    <div class="list">
+        <ul>
+        </ul>
+    </div>
+</div>
+
+<!--菜单项-->
+<div style="display: flex;margin: 10px;padding: 10px;">
+    <div style="background-color: goldenrod;width:30%;height:200px;margin: auto">
+        <p style="top: 50%;position: relative;transform：translateY(-50%);cursor:wait" align="center" id="b_color">
+            进入Nike官网</p>
+        <div style="margin: 10px">
+            <p>韩系女装最新吊带风靡全球不要错误机会</p>
+        </div>
+        <hr>
+        <div style="margin: 10px;margin-top: 80px">
+            <b style="font-size: 22px;font-family: fantasy;">¥</b>
+            <span style="color: red">209</span>&nbsp;元
+        </div>
+        <span style="float: right;margin-right: 20px;">
+            <a href="#" id="more" style="color: chocolate;text-decoration: none">查看更多>></a>
+        </span>
+    </div>
+
+    <div style="background-color: goldenrod;width:30%;height:200px;display: flex">
+        <div align="center" style="background-color: #df4356;width: 80px;height:150px;position: relative;margin: auto">
+            <p style="top: 50%;position: relative;transform：translateY(-50%);" align="center">背景色</p>
+        </div>
+        <div align="center" style="background-color: #df4356;width: 80px;height: 80px;position: relative;margin: auto">
+            <p style="top: 50%;position: relative;transform：translateY(-50%);" align="center">
+                <img width="40"
+                     src="https://dss0.bdstatic.com/-0U0bXSm1A5BphGlnYG/tam-ogel/1278149358_-1380086376_88_88.jpg">
+            </p>
+        </div>
+        <div align="center" style="background-color: #df4356;width: 80px;position: relative;margin: auto">
+            <p style="top: 50%;position: relative;transform：translateY(-50%);" align="center">背景色</p>
+        </div>
+    </div>
+
+    <div style="background-color: goldenrod;width:30%;height:200px;margin: auto">
+        <p id="blink" style="top: 75%;position: relative;transform：translateY(-50%);color: deeppink" align="center">
+            欢迎观看Nike官网官方宣传视频
+        </p>
+        <video style="width: 100%;" controls muted autoplay="autoplay" loop="loop">
+            <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
+            您的浏览器不支持 video 标签
+        </video>
+    </div>
+
+</div>
+
+<canvas id="cavs" style="width: 100%;height: 300px">下雨了!!</canvas>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    //jq鼠标点击事件
+    $(document).ready(function () {
+        $("#more").click(function () {
+            $("a").slideToggle();
+            alert('你好啊!该点击的按钮点不该点的不要点,谢谢!!!!!!!!')
+            setTimeout(
+                "alert('你这么狂,把查看更多和导航栏干没了吧!!!!!!!')",
+            )
+        });
+        $("#b_color").click(function () {
+            setTimeout(window.open('https://www.nikestore.com.cn/'), 200);
+        });
+        $("#Dropdown1").click(function () {
+            setTimeout(window.open('https://www.runoob.com/jquery/event-click.html'), 200);
+        });
+        $("#Dropdown2").click(function () {
+            setTimeout(window.open('https://www.runoob.com/tags/tag-li.html'), 200);
+        });
+        $("#Dropdown3").click(function () {
+            setTimeout(window.open('https://www.jd.com/'), 200);
+        });
+    });
+
+    function changeColor() {
+        var color = "#f00|#0f0|#00f|#880|#808|#088|yellow|green|blue|gray";
+        color = color.split("|");
+        document.getElementById("blink").style.color = color[parseInt(Math.random() * color.length)];
+    }
+
+    setInterval("changeColor()", 200);
+
+    //窗口大小发生改变
+    $(window).resize(function () {
+        //获取窗口宽度
+        var windSize = $(window).width();
+        if (windSize > 576) {
+            $(".show").slideDown(0);
+        } else {
+            $(".show").slideUp(0);
+        }
+    });
+
+    $(function () {
+        //获取窗口的宽度
+        var width_win = $(window).width();
+        //获取li的个数
+        var ligeshu = $(".banner_tuli ul li").length;
+        //装banner的ul的宽度=窗口的宽度*li的个数
+        $(".banner_tuli").css({"width": width_win * ligeshu + "px"});
+        //li的宽度=窗口的宽度
+        $(".banner_tuli ul li").css({"width": width_win + "px"});
+        //定义b=0
+        var b = 0;
+        //有多少张图片就循环出多少底部的状态
+        var hemltext = "";
+        for (var i = 0; i < ligeshu; i++) {
+            console.log(i)
+            if (i == "0") {
+                hemltext += "<li class='on'></li>";
+            } else {
+                hemltext += "<li></li>";
+            }
+        }
+        $(".list ul").html(hemltext);
+        //有多少张图片就循环出多少底部的状态 end
+        //点击图片的li
+        $(document).on("click", ".list ul li", function () {
+            //停止还没执行完的动画
+            $(".banner_tuli").stop();
+            //获取点击的li
+            b = $(this).index();
+            //点击的li添加class，去掉其他的li的class
+            $(this).addClass("on").siblings("li").removeClass("on");
+            //装banner的ul的div做动画
+            $(".banner_tuli").animate({
+                "left": -b * width_win + "px"
+            }, 430);
+        })
+
+        function left() {
+            b = b + 1;
+            //b等于li的长度时，让b等于0
+            if (b == ligeshu) {
+                b = 0;
+            } else {
+            }
+            //执行动画，
+            $(".banner_tuli").animate({
+                "left": -b * width_win + "px"
+            }, 430);
+            //给li添加当前状态
+            $(".list ul li").eq(b).addClass("on").siblings("li").removeClass("on");
+        }
+
+        //每三秒执行left
+        var lun = setInterval(left, 3000);
+        //当鼠标在banner上时，不执行left事件
+        $(".banner").mouseover(function () {
+            clearInterval(lun);
+        })
+        //当鼠标离开banner时，每三秒执行left
+        $(".banner").mouseout(function () {
+            lun = setInterval(left, 3000);
+        })
+    })
+</script>
+
+
+
+<script>
+    var cavs = document.getElementById("cavs"); //获得了这个画板
+    var ctx = cavs.getContext("2d"); //画笔  ‘3d’   --- webgl  --- threejs
+
+    var w = (cavs.width = window.innerWidth);
+    var h = (cavs.height = window.innerHeight);
+
+    window.onresize = function () {
+        var w = (cavs.width = window.innerWidth);
+        var h = (cavs.height = window.innerHeight);
+    };
+    var cont = 30; //雨滴的最大数
+    var RainArr = []; // 装雨滴的数组
+    //开始
+
+    function Rain() {
+        //构造函数
+    }
+
+    Rain.prototype = {
+        init: function () {
+            this.x = random(1, w); //随机坐标x
+            this.y = 0; // 坐标y
+            this.r = 1;
+            this.ySpeed = random(4, 7);
+            this.rSpeed = 1;
+            this.t = 1; //透明度
+            this.ts = 0.96; //透明度的系数
+            this.l = random(h * 0.8, h * 0.9); //落地的高度
+            this.maxR = 50;
+        },
+        draw: function () {
+            if (this.y > this.l) {
+                ctx.beginPath(); //开启一个路径
+                ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+                //  圆心 x ,y ,半径，起始角度，Π，false顺时针，true逆时针
+                ctx.strokeStyle = "rgba(0,255,255," + this.t + ")";
+                ctx.closePath(); //闭合一个路径
+                ctx.stroke(); //开始描边绘制
+            } else {
+                ctx.beginPath(); //开启一个路径
+                ctx.fillStyle = colorRandom();//随机颜色
+                ctx.fillRect(this.x, this.y, 2, 10);
+                //      矩形  x  y  w  h
+                ctx.closePath(); //闭合一个路径
+            }
+
+            this.update(); //坐标更新
+        },
+        update: function () {
+            if (this.y > this.l) {
+                //画圆
+                //   return;
+                // init.draw_arc();
+                if (this.t > 0.03) {
+                    this.r += this.rSpeed; //半径不断增大
+                    if (this.r > this.maxR) {
+                        this.t *= this.ts; //透明度变小
+                        // console.log(init.t);
+                    }
+                } else {
+
+                    //   return;//雨停了
+                    this.init(); //重新来过，初始化
+                }
+            } else {
+                this.y += this.ySpeed;
+                // this.draw_rect();
+            }
+        },
+    };
+
+    //随机数的函数
+    function random(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+
+    var one = new Rain();
+    one.init(); //初始化一下
+    // 产生多个雨滴
+    function createRain() {
+        for (var i = 0; i < cont; i++) {
+            (function (j) {
+                setTimeout(function () {
+                    var rain = new Rain();
+                    rain.init();
+                    RainArr.push(rain);
+                }, j * 200);
+            })(i);
+        }
+    }
+    createRain();
+    //运动
+    function move() {
+        //  添加一个大蒙层
+        ctx.beginPath(); //开启一个路径
+        ctx.fillStyle = "rgba(0,0,0,0.1)";
+        ctx.fillRect(0, 0, w, h);
+        //      矩形  x  y  w  h
+        ctx.closePath(); //闭合一个路径
+
+        for(var i = 0;i<RainArr.length;i++){
+            RainArr[i].draw();
+        }
+
+        window.requestAnimationFrame(move);
+    }
+    move();
+    //随机颜色
+    function colorRandom(){
+        var r = Math.floor(Math.random()*255);
+        var g = Math.floor(Math.random()*255);
+        var b = Math.floor(Math.random()*255);
+        return "rgba("+ r +","+ g +","+ b +")";
+    }
+</script>
+
+
+
+
+</body>
+</html>

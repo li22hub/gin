@@ -26,9 +26,9 @@ type UserRes []Models.Users
 func GetUserList(ctx *gin.Context) {
 	var resData common.ResponseList
 	data := []*Models.User{}
-	data,count, err := Models.UserList(data)
+	data, count, err := Models.UserList(data)
 	users := make(UserRes, len(data))
-	for i,v := range data {
+	for i, v := range data {
 		timeLayout := "2006-01-02 15:04:05"
 		newTime := time.Unix(v.Time, 0).Format(timeLayout)
 		users[i].Id = v.Id

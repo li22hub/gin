@@ -10,7 +10,8 @@ import (
 )
 
 var (
-	cfgfile = "E:/package_go/config.yml"
+	//cfgfile = "E:/package_go/config.yml"
+	cfgfile = "/Users/lizheng/Documents/local/gin/config.yml"
 )
 
 func init() {

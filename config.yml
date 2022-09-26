@@ -6,9 +6,9 @@ HttpAddr: 127.0.0.1:8889
 Mysql:
   host: localhost
   user: root
-  pass: root
+  pass:
   port: 3306
-  dbname: test
+  dbname: host_lizheng
   charset: utf8
 
 #Redis服务配置

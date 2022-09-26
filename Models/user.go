@@ -22,13 +22,13 @@ type Users struct {
 	Username string `json:"username" db:"username" form:"username"`
 	Age      int    `json:"age" db:"age" form:"age"`
 	Address  string `json:"address" db:"address" form:"address"`
-	Time     string  `json:"time" db:"time" form:"time"`
+	Time     string `json:"time" db:"time" form:"time"`
 	Status   int    `json:"status" db:"status" form:"status"`
 	IsDel    int    `json:"is_del" db:"is_del" form:"is_del"`
 }
 
 //查询所有用户信息
-func UserList(u []*User) ([]*User,int,error) {
+func UserList(u []*User) ([]*User, int, error) {
 	userTest := Database.GetMysql()
 	var count int
 	db := userTest.DB.Table("user_test")
@@ -37,9 +37,9 @@ func UserList(u []*User) ([]*User,int,error) {
 	fmt.Println(err)
 	if err != nil {
 		defer userTest.DB.Close()
-		return u,count, err
+		return u, count, err
 	}
-	return u,count, nil
+	return u, count, nil
 }
 
 //根据id查询一条用户信息
