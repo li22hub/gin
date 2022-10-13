@@ -52,7 +52,7 @@ func FindList(ctx *gin.Context) {
 	page, _ := strconv.Atoi(ctx.Query("page"))
 	pageSize, _ := strconv.Atoi(ctx.Query("pageSize"))
 	if page == 0 || pageSize == 0 {
-		common.ResponseData(ctx,http.StatusInternalServerError,1,"缺少必填参数",nil)
+		common.ResponseData(ctx, http.StatusInternalServerError, 1, "缺少必填参数", nil)
 	}
 	where.Id, _ = strconv.Atoi(ctx.Query("id"))
 	where.ExecuteCount, _ = strconv.Atoi(ctx.Query("execute_count"))
